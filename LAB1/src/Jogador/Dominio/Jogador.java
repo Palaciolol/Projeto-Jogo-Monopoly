@@ -112,6 +112,7 @@ public class Jogador {
     }
     
     public boolean verificar_email() {
+        //Esse é o metodo para verificar o email
         boolean eh_valido = false;
         if (this.email != null && this.email.length() > 0) {
             String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
@@ -124,6 +125,7 @@ public class Jogador {
         return eh_valido;
     }
     public void imprime_jogador() {
+        //Essa função imprime os atributos do jogador, verificando se seu cpf e email são válidos.
         System.out.println(this.nome);
         if (verificar_CPF() == true){
             System.out.println(this.CPF);

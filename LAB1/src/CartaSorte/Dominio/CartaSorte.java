@@ -11,6 +11,9 @@ public class CartaSorte {
     private String restritiva;
 
     public CartaSorte(int id, String nome){
+        /*Os únicos atributos que toda carta sorte precisa ter são seu id e seu nome,
+        logo são os únicos que precisam ser passados no construtor.
+        */
         this.id = id;
         this.nome = nome;
     }
