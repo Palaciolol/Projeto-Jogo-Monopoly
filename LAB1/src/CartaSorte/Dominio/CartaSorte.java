@@ -3,17 +3,18 @@ package CartaSorte.Dominio;
 public class CartaSorte {
     private int id;
     private String nome;
-    private String mov;
-    private String efeito;
-    private String valor_pag;
-    private String acao_esp;
-    private String especial;
+    private int movimento;
+    private int efeito;
+    private float valor;
+    private String acao;
+    private int tempo;
     private String restritiva;
 
-    public CartaSorte(int id, String nome){
-        /*Os únicos atributos que toda carta sorte precisa ter são seu id e seu nome,
-        logo são os únicos que precisam ser passados no construtor.
-        */
+    public CartaSorte(int id, String nome) {
+        /*
+         * Os únicos atributos que toda carta sorte precisa ter são seu id e seu nome/descrição,
+         * logo são os únicos que precisam ser passados no construtor.
+         */
         this.id = id;
         this.nome = nome;
     }
@@ -34,69 +35,76 @@ public class CartaSorte {
         this.nome = nome;
     }
 
-    public String getMov(){
-        return mov;
-    }
-    public void setMov(String mov){
-        this.mov = mov;
+    public int getMov() {
+        return movimento;
     }
 
-    public String getEfeito(){
+    public void setMov(int movimento) {
+        this.movimento = movimento;
+    }
+
+    public int getEfeito() {
         return efeito;
     }
-    public void setEfeito(String efeito){
+
+    public void setEfeito(int efeito) {
         this.efeito = efeito;
     }
 
-    public String getValor_pag(){
-        return valor_pag;
-    }
-    public void setValor_pag(String valor_pag){
-        this.valor_pag = valor_pag;
+    public float get_valor() {
+        return valor;
     }
 
-    public String getAcao_esp(){
-        return acao_esp;
-    }
-    public void setAcao_esp(String acao_esp){
-        this.acao_esp = acao_esp;
+    public void set_valor(float valor) {
+        this.valor = valor;
     }
 
-    public String getEsp(){
-        return especial;
+    public String get_acao() {
+        return acao;
     }
-    public void setEsp(String especial){
-        this.especial = especial;
+
+    public void set_acao(String acao) {
+        this.acao = acao;
     }
-    public String getRestritiva(){
+
+    public int get_tempo() {
+        return tempo;
+    }
+
+    public void set_tempo(int tempo) {
+        this.tempo = tempo;
+    }
+
+    public String getRestritiva() {
         return restritiva;
 
     }
-    public void setRestritiva(String restritiva){
+
+    public void setRestritiva(String restritiva) {
         this.restritiva = restritiva;
     }
 
-    public void imprime_carta_sorte(){
+    public void imprime_carta_sorte() {
         System.out.println(this.id);
         System.out.println(this.nome);
-        if (mov != null){
-            System.out.println(this.mov);
+        if (movimento != 0) {
+            System.out.println(this.movimento);
         }
-        if (efeito != null){
+        if (efeito != 0) {
             System.out.println(this.efeito);
         }
-        if (valor_pag != null){
+        if (valor != 0) {
             System.out.println(this.efeito);
         }
-        if (acao_esp != null){
+        if (acao != null) {
             System.out.println(this.efeito);
         }
-        if (especial != null){
+        if (tempo != 0) {
             System.out.println(this.efeito);
         }
-        if (restritiva != null){
+        if (restritiva != null) {
             System.out.println(this.efeito);
         }
     }
+    
 }
-
