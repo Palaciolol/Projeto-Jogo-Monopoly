@@ -9,7 +9,5 @@ public class Teste01 {
         jogador.setNome("Lucas");
         jogador.setCPF("12345678912");
         jogador.setFoto("Cringe");
-        boolean oi = jogador.verificar_CPF();
-        System.out.println(oi);
     }
 }
