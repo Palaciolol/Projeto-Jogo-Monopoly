@@ -1,4 +1,4 @@
-package Métodos.Dominio;
+package Métodos;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

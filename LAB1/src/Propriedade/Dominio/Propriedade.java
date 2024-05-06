@@ -1,34 +1,24 @@
 package Propriedade.Dominio;
 
-public class Propriedade {
-    protected int id;
+import Carta.Carta;
+
+public abstract class Propriedade extends Carta {
     protected String nome;
     protected String proprietario;
     protected int preco;
     protected int aluguel;
-    protected static int num_propriedades = 0;
 
-    public Propriedade() {
-        setId(num_propriedades);
-        num_propriedades++;
+    public Propriedade(){
+        super();
     }
-
-    public Propriedade(String nome, String proprietario, int preco, int aluguel) {
+    
+    
+    public Propriedade(String descricao,String nome, String proprietario, int preco, int aluguel) {
+        super(descricao);
         this.nome = nome;
         this.proprietario = proprietario;
         this.preco = preco;
         this.aluguel = aluguel;
-        setId(num_propriedades);
-        num_propriedades++;
-
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -63,13 +53,12 @@ public class Propriedade {
         this.aluguel = aluguel;
     }
 
-    public int calcular_aluguel() {
-        return this.aluguel;
-    }
+    public abstract int calcular_aluguel();
+    
 
     @Override
     public String toString() {
-        return "id=" + id + ", nome=" + nome + ", proprietario=" + proprietario + ", preco=" + preco
+        return "nome=" + nome + ", proprietario=" + proprietario + ", preco=" + preco
                 + ", aluguel=" + aluguel + "";
     }
 

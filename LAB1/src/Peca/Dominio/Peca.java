@@ -1,8 +1,12 @@
 package Peca.Dominio;
 
-public class Peca {
-    private String cor;
-    private int pos;
+public  class Peca {
+    protected String cor;
+    protected int pos;
+
+    public Peca(){
+        
+    }
 
     public Peca(String cor, int pos) {
         this.cor = cor;
@@ -26,10 +30,9 @@ public class Peca {
         this.pos = pos;
     }
 
-    public void imprime_peca(){
-        System.out.println(this.cor);
-        System.out.println(this.pos);
+    @Override
+    public String toString() {
+        return "Peca [cor=" + cor + ", pos=" + pos + "]";
     }
-
 
 }

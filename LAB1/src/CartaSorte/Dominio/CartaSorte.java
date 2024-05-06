@@ -1,7 +1,9 @@
 package CartaSorte.Dominio;
 
-public class CartaSorte {
-    private int id;
+import Carta.Carta;
+import Jogador.Dominio.Jogador;
+
+public class CartaSorte extends Carta {
     private String nome;
     private int movimento;
     private int efeito;
@@ -10,12 +12,8 @@ public class CartaSorte {
     private int tempo;
     private String restritiva;
 
-    public CartaSorte(int id, String nome) {
-        /*
-         * Os únicos atributos que toda carta sorte precisa ter são seu id e seu nome/descrição,
-         * logo são os únicos que precisam ser passados no construtor.
-         */
-        this.id = id;
+    public CartaSorte(String descricao, Jogador dono, String nome){
+        super(descricao);
         this.nome = nome;
     }
 
@@ -86,6 +84,8 @@ public class CartaSorte {
 
     public void imprime_carta_sorte() {
         System.out.println(this.id);
+        System.out.println(this.descricao);
+        System.out.println(this.dono);
         System.out.println(this.nome);
         if (movimento != 0) {
             System.out.println(this.movimento);

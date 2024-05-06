@@ -2,16 +2,17 @@ package Terreno.Dominio;
 import Propriedade.Dominio.Propriedade;
 
 public class Terreno extends Propriedade {
-    
-
     private int num_casas;
     private int valor_casa;
     private int valor_hotel;
     private boolean hotel;
 
-    public Terreno(String nome, String proprietario, int preco, int aluguel, int num_casas, int valor_casa,
-            int valor_hotel, boolean hotel) {
-        super(nome, proprietario, preco, aluguel);
+    public Terreno(){
+        super();
+    }
+
+    public Terreno(String descricao,String nome, String proprietario, int preco, int aluguel, int num_casas, int valor_casa, int valor_hotel, boolean hotel) {
+        super(descricao,nome, proprietario, preco, aluguel);
         this.num_casas = num_casas;
         this.valor_casa = valor_casa;
         this.valor_hotel = valor_hotel;
@@ -50,6 +51,15 @@ public class Terreno extends Propriedade {
         this.hotel = hotel;
     }
 
+    public boolean comprar_terreno(int capital) {
+        boolean comprou = false;
+        if (capital >= this.preco){
+            comprou = true;
+        }
+        return comprou;
+    }
+    
+
     public boolean comprar_casa(int capital) {
         boolean comprou = false;
         if (capital >= this.valor_casa){
@@ -71,13 +81,13 @@ public class Terreno extends Propriedade {
             return valor_hotel;
         }
         else{
-            return num_casas * aluguel;
+            return num_casas * this.aluguel;
         }
     }
 
     @Override
     public String toString() {
-        return super.toString() + "Terreno [num_casas=" + num_casas + ", valor_casa=" + valor_casa + ", valor_hotel=" + valor_hotel
+        return super.toString() + "Terreno num_casas=" + num_casas + ", valor_casa=" + valor_casa + ", valor_hotel=" + valor_hotel
                 + ", hotel=" + hotel + "]";
     }
 
