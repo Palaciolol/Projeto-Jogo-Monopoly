@@ -4,8 +4,7 @@ import java.util.Scanner;
 import Terreno.Dominio.Terreno;
 
 public class LerTerreno {
-    public static Terreno le_terreno(){
-        Scanner entrada = new Scanner(System.in);
+    public static Terreno le_terreno(Scanner entrada){
         System.out.println("Vamos adicionar um um terreno nesse tabuleiro!");
         System.out.println("Digite o nome do Terreno");
         String nome_terr = entrada.nextLine();
@@ -22,7 +21,6 @@ public class LerTerreno {
         System.out.println("Digite o valor do hotel");
         int valor_hotel = entrada.nextInt();
         Terreno terr = new Terreno("terreno_teste", nome_terr, nome_dono, preco, valor_aluguel, num_casas, valor_construcao, valor_hotel, true);
-        entrada.close();
         return terr;
     }
 }

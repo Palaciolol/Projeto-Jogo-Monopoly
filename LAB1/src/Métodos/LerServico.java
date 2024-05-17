@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 
 public class LerServico {
-    public static ServicoPublico le_servico(){
-        Scanner entrada = new Scanner(System.in);
+    public static ServicoPublico le_servico(Scanner entrada){
         System.out.println("Digite o nome do Serviço Público");
         String nome_ser = entrada.nextLine();
         System.out.println("Digite o nome do Dono");
@@ -18,7 +17,6 @@ public class LerServico {
         System.out.println("Digite o valor do multiplicador de dados");
         int dado = entrada.nextInt();
         ServicoPublico serv = new ServicoPublico("serviço_teste", nome_ser, nome_dono_ser, preco_ser, valor_aluguel_ser, dado);
-        entrada.close();
         return serv;
     }
 }

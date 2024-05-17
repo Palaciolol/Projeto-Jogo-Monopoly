@@ -2,6 +2,7 @@ package Métodos;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import Tabuleiro.Dominio.Tabuleiro;
 
 public class Utilidades {
     public static boolean verificar_CPF(String CPF) {
@@ -73,5 +74,14 @@ public class Utilidades {
             }
         }
         return eh_valido;
+    }
+    public static void listar_jogadores(int quant_jog){
+        System.out.println("Opções:");
+        for (int i = 0; i < quant_jog; i++){
+            System.out.print(Tabuleiro.jogadores.get(i).getNome());
+            System.out.println(" ------ " + Tabuleiro.jogadores.get(i).getId());
+        }
+
+    
 }
 }

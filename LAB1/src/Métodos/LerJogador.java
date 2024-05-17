@@ -5,13 +5,12 @@ import java.util.Scanner;
 import Peca.Dominio.Peca;
 
 public class LerJogador {
-    public static Jogador le_jogador(){
-        Scanner entrada1 = new Scanner(System.in);
+    public static Jogador le_jogador(Scanner entrada){
         Jogador jogador1 = new Jogador();
         System.out.println("Vamos preencher seu dados para começar a jogar! Qual o seu nome? ");
-        jogador1.setNome(entrada1.nextLine());
+        jogador1.setNome(entrada.nextLine());
         System.out.println("Agora digite seu CPF: ");
-        String cpf = entrada1.nextLine();
+        String cpf = entrada.nextLine();
         //boolean eh_valido_cpf = false;
         // Esse loop faz a validação do CPF
         /* 
@@ -39,17 +38,16 @@ public class LerJogador {
          * 
          */
         System.out.println("Digite seu email: ");
-        String email = entrada1.nextLine();
+        String email = entrada.nextLine();
         //boolean email_valido = false;
         // Esse loop faz a validação do email
         jogador1.setEmail(email);
         System.out.println("E agora sua foto mais bonita: ");
-        jogador1.setFoto(entrada1.nextLine());
+        jogador1.setFoto(entrada.nextLine());
         System.out.println("Escolha uma cor para sua peça: ");
-        String cor = entrada1.nextLine();
+        String cor = entrada.nextLine();
         Peca peca = new Peca(cor, 0);
         jogador1.setPeca(peca);
-        entrada1.close();
         return jogador1;
     }
 }

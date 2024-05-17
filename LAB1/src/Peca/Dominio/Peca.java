@@ -32,7 +32,7 @@ public  class Peca {
 
     @Override
     public String toString() {
-        return "Peca [cor=" + cor + ", pos=" + pos + "]";
+        return "cor = " + cor + ", pos = " + pos + "";
     }
 
 }

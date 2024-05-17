@@ -19,6 +19,7 @@ public class Jogador{
     public Jogador(){
         setId(num_jogadores);
         num_jogadores++;
+        dinheiro = 1000;
     }
 
     public Jogador(String nome, String CPF, String email, String foto, Peca peca) { // Construtor
@@ -106,8 +107,8 @@ public class Jogador{
     
     @Override
     public String toString() {
-        return "nome=" + nome + ", CPF=" + CPF + ", email=" + email + ", foto=" + foto + ", id=" + id
-                + ", dinheiro=" + dinheiro + ", peca=" + peca + ", carta=" + cartas + "";
+        return "nome = " + nome + ", CPF = " + CPF + ", email = " + email + ", foto = " + foto + ", id = " + id
+                + ", dinheiro = " + dinheiro + ", peca : " + peca + ", cartas =" + cartas + "";
     }
     
     

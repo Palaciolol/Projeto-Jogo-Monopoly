@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 
 public class LerEstacao {
-    public static Estacao le_estacao(){
-        Scanner entrada = new Scanner(System.in);
+    public static Estacao le_estacao(Scanner entrada){
         System.out.println("Digite o nome da Estação");
         String nome_est = entrada.nextLine();
         System.out.println("Digite o nome do Dono");
@@ -16,7 +15,6 @@ public class LerEstacao {
         System.out.println("Digite o valor do aluguel");
         int valor_aluguel_est = entrada.nextInt();
         Estacao est = new Estacao("estação_teste", nome_est, nome_dono_est, preco_est, valor_aluguel_est);
-        entrada.close();
         return est;
     }
 }
