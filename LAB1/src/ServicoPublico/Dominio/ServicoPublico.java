@@ -2,14 +2,14 @@ package ServicoPublico.Dominio;
 import Propriedade.Dominio.Propriedade;
 
 public class ServicoPublico  extends Propriedade{
-    private int dados;
+    private int multiplicador;
 
     public ServicoPublico(){
         super();        
     }
-    public ServicoPublico(String descricao , String nome, String proprietario, int preco, int aluguel, int dados){
+    public ServicoPublico(String descricao , String nome, String proprietario, int preco, int aluguel, int multiplicador){
         super(descricao, nome, proprietario, preco, aluguel);
-        this.dados = dados;
+        this.multiplicador = multiplicador;
     }
 
     public boolean comprar_servico(int capital) {
@@ -22,7 +22,7 @@ public class ServicoPublico  extends Propriedade{
 
 
     public int calcular_aluguel(){
-        return dados * this.aluguel;
+        return multiplicador * this.aluguel;
     }
 
     @Override

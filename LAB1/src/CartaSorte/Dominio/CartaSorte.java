@@ -7,14 +7,18 @@ public class CartaSorte extends Carta {
     private String nome;
     private int movimento;
     private int efeito;
-    private float valor;
+    private int valor;
     private String acao;
     private int tempo;
     private String restritiva;
+    private TipoCarta tipoCarta;
 
-    public CartaSorte(String descricao, Jogador dono, String nome){
+    
+
+    public CartaSorte(String descricao, String nome, TipoCarta tipoCarta) {
         super(descricao);
         this.nome = nome;
+        this.tipoCarta = tipoCarta;
     }
 
     public int getID() {
@@ -49,11 +53,11 @@ public class CartaSorte extends Carta {
         this.efeito = efeito;
     }
 
-    public float get_valor() {
+    public int get_valor() {
         return valor;
     }
 
-    public void set_valor(float valor) {
+    public void set_valor(int valor) {
         this.valor = valor;
     }
 
@@ -82,6 +86,10 @@ public class CartaSorte extends Carta {
         this.restritiva = restritiva;
     }
 
+    public TipoCarta getTipoCarta() {
+        return tipoCarta;
+    }
+
     public void imprime_carta_sorte() {
         System.out.println(this.id);
         System.out.println(this.descricao);
@@ -106,5 +114,9 @@ public class CartaSorte extends Carta {
             System.out.println(this.efeito);
         }
     }
-    
+
+    public void executaAcao(Jogador jogador) {
+        jogador.setDinheiro(jogador.getDinheiro() + valor);
+    }
+
 }

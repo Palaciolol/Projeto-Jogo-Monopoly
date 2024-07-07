@@ -2,6 +2,8 @@ package Estacao.Dominio;
 import Propriedade.Dominio.Propriedade;
 
 public class Estacao extends Propriedade {
+    private int tarifa;
+
     public Estacao(){
         super();
     }
@@ -20,7 +22,7 @@ public class Estacao extends Propriedade {
 
 
     public int calcular_aluguel(){
-        return this.aluguel;
+        return tarifa;
     }
     
     @Override

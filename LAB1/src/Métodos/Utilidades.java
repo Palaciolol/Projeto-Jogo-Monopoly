@@ -75,11 +75,11 @@ public class Utilidades {
         }
         return eh_valido;
     }
-    public static void listar_jogadores(int quant_jog){
+    public static void listar_jogadores(int quant_jog, Tabuleiro tabuleiro){
         System.out.println("Opções:");
         for (int i = 0; i < quant_jog; i++){
-            System.out.print(Tabuleiro.jogadores.get(i).getNome());
-            System.out.println(" ------ " + Tabuleiro.jogadores.get(i).getId());
+            System.out.print(tabuleiro.jogadores.get(i).getNome());
+            System.out.println(" ------ " + tabuleiro.jogadores.get(i).getId());
         }
 
     

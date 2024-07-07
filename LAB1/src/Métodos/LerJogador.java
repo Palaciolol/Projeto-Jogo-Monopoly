@@ -11,9 +11,8 @@ public class LerJogador {
         jogador1.setNome(entrada.nextLine());
         System.out.println("Agora digite seu CPF: ");
         String cpf = entrada.nextLine();
-        //boolean eh_valido_cpf = false;
+        boolean eh_valido_cpf = false;
         // Esse loop faz a validação do CPF
-        /* 
         while (eh_valido_cpf == false) {
             eh_valido_cpf = Utilidades.verificar_CPF(cpf);
             if (eh_valido_cpf == true) {
@@ -22,25 +21,21 @@ public class LerJogador {
             System.out.println("Digite um cpf válido!!!");
             cpf = entrada.nextLine();
         }
-        /* */
+        
         jogador1.setCPF(cpf);
-        /*
-         * 
-         * 
-         while (email_valido == false) {
-             email_valido = Utilidades.verificar_email(email);
-             if (email_valido == true) {
-                 break;
-             }
-             System.out.println("Digite um email válido!!!");
-             email = entrada1.nextLine();
-         }
-         * 
-         */
+        
         System.out.println("Digite seu email: ");
         String email = entrada.nextLine();
-        //boolean email_valido = false;
+        boolean email_valido = false;
         // Esse loop faz a validação do email
+        while (email_valido == false) {
+            email_valido = Utilidades.verificar_email(email);
+            if (email_valido == true) {
+                break;
+            }
+            System.out.println("Digite um email válido!!!");
+            email = entrada.nextLine();
+        }
         jogador1.setEmail(email);
         System.out.println("E agora sua foto mais bonita: ");
         jogador1.setFoto(entrada.nextLine());

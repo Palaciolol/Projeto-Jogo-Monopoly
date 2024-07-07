@@ -10,16 +10,16 @@ import Métodos.LerJogador;
 import Métodos.LerServico;
 import Métodos.LerTerreno;
 import Métodos.Utilidades;
-//import CartaSorte.Dominio.CartaSorte;
+import CartaSorte.Dominio.CartaSorte;
+import CartaSorte.Dominio.TipoCarta;
 import Estacao.Dominio.Estacao;
-//import Peca.Dominio.Peca;
-//import Propriedade.Dominio.Propriedade;
+import Peca.Dominio.Peca;
 import ServicoPublico.Dominio.ServicoPublico;
 import Tabuleiro.Dominio.Tabuleiro;
 import Terreno.Dominio.Terreno;
-import Peca.Dominio.Peca;
 import java.util.Scanner;
 import java.util.Random;
+
 
 
 //Esta classe contém a estrutura de implementação de um jogo Monopoly
@@ -31,10 +31,21 @@ public class Monopoly {
         System.out.println("Quantos jogadores vão jogar? ");
         int quant_jog = entrada.nextInt();
         entrada.nextLine();
+        Tabuleiro tabuleiro = new Tabuleiro();
+        
         for (int i = 0; i < quant_jog; i++) {
             Jogador jogador = LerJogador.le_jogador(entrada);
-            Tabuleiro.jogadores.add(jogador);
+            tabuleiro.addJogador(jogador);
+        
         }
+        tabuleiro.iniciarArquivo("arquivo.txt");
+        tabuleiro.salvaLog("arquivo.txt", "Informações dos jogadores: ");
+
+        //Criação de Carta Sorte
+        CartaSorte carta = new CartaSorte("O gerente ficou maluco, ganhe 1000", "Dia de sorte", TipoCarta.SORTE);
+        carta.set_valor(1000);
+
+        //O método Distribuir Cartas não foi feito pois não faz sentido na minha lógica de jogo.
         
         int opcao;
         do {
@@ -46,6 +57,7 @@ public class Monopoly {
             System.out.println("4 - Comprar Estação");
             System.out.println("5 - Ver informações de jogador");
             System.out.println("6 - Mover um jogador");
+            System.out.println("7 - Sorte ou Revés?");
             
             opcao = entrada.nextInt();
             entrada.nextLine();
@@ -55,24 +67,30 @@ public class Monopoly {
                     break;
                 case 1:
                     System.out.println("Digite o id do jogador que você gostaria de remover");
-                    Utilidades.listar_jogadores(quant_jog);
+                    Utilidades.listar_jogadores(quant_jog, tabuleiro);
                     int remocao = entrada.nextInt();
-                    Tabuleiro.jogadores.remove(remocao);
+                    tabuleiro.salvaLog("arquivo.txt", "Jogador número " + remocao + " foi removido do jogo");
+                    tabuleiro.removerJogador(remocao);
                     break;
                 case 2:
                     System.out.println("Primeiro crie o Serviço Público");
                     ServicoPublico serv = LerServico.le_servico(entrada);
                     entrada.nextLine();
-                    Tabuleiro.propriedades.add(serv);
+                    tabuleiro.addPropriedade(serv);
+                    
                     System.out.println("Digite o id do jogador que está comprando: ");
-                    Utilidades.listar_jogadores(quant_jog);
+                    Utilidades.listar_jogadores(quant_jog, tabuleiro);
                     int id = entrada.nextInt();
-                    boolean comprou_serv = serv.comprar_servico(Tabuleiro.jogadores.get(id).getDinheiro());
-                    serv.setDono(Tabuleiro.jogadores.get(id));
+                    
+                    tabuleiro.jogadores.get(id).getDinheiro();
+                    
+                    boolean comprou_serv = serv.comprar_servico(tabuleiro.jogadores.get(id).getDinheiro());
+                    serv.setDono(tabuleiro.jogadores.get(id));
+                    
                     Jogador.cartas.add(serv);
         
                     if (comprou_serv) {
-                        System.out.println("Serviço comprado!");
+                        tabuleiro.salvaLog("arquivo.txt", "Jogador número " + id + " comprou " + serv.getNome() + "");
                     }
                     else{
                         System.out.println("Você não tem dinheiro suficiente para comprar este Serviço Público");
@@ -81,17 +99,17 @@ public class Monopoly {
                 case 3:
                     System.out.println("Primeiro crie o Terreno");
                     Terreno terr =  LerTerreno.le_terreno(entrada);
-                    Tabuleiro.propriedades.add(terr);
+                    tabuleiro.addPropriedade(terr);
                     System.out.println("Digite o id do jogador que está comprando: ");
-                    Utilidades.listar_jogadores(quant_jog);
+                    Utilidades.listar_jogadores(quant_jog, tabuleiro);
                     int id2 = entrada.nextInt();
-                    boolean comprou_terr = terr.comprar_terreno(Tabuleiro.jogadores.get(id2).getDinheiro());
-                    terr.setDono(Tabuleiro.jogadores.get(id2));
+                    boolean comprou_terr = terr.comprar_terreno(tabuleiro.jogadores.get(id2).getDinheiro());
+                    terr.setDono(tabuleiro.jogadores.get(id2));
                     Jogador.cartas.add(terr);
                     
             
                     if (comprou_terr) {
-                        System.out.println("Terreno comprada!");
+                        tabuleiro.salvaLog("arquivo.txt", "Jogador número " + id2 + " comprou " + terr.getNome() + "");
                     }
                     else{
                         System.out.println("Você não tem dinheiro suficiente para comprar este Terreno");
@@ -100,16 +118,16 @@ public class Monopoly {
                 case 4:
                     System.out.println("Primeiro crie a Estação");
                     Estacao est = LerEstacao.le_estacao(entrada);
-                    Tabuleiro.propriedades.add(est);
+                    tabuleiro.addPropriedade(est);
                     System.out.println("Digite o id do jogador que está comprando: ");
-                    Utilidades.listar_jogadores(quant_jog);
+                    Utilidades.listar_jogadores(quant_jog, tabuleiro);
                     int id3 = entrada.nextInt();
-                    boolean comprou_est = est.comprar_estacao(Tabuleiro.jogadores.get(id3).getDinheiro());
-                    est.setDono(Tabuleiro.jogadores.get(id3));
+                    boolean comprou_est = est.comprar_estacao(tabuleiro.jogadores.get(id3).getDinheiro());
+                    est.setDono(tabuleiro.jogadores.get(id3));
                     Jogador.cartas.add(est);
             
                     if (comprou_est) {
-                        System.out.println("Estação comprada!");
+                        tabuleiro.salvaLog("arquivo.txt", "Jogador número " + id3 + " comprou " + est.getNome() + "");
                     }
                     else{
                         System.out.println("Você não tem dinheiro suficiente para comprar esta Estação");
@@ -117,28 +135,37 @@ public class Monopoly {
                     break;
                 case 5:
                     System.out.println("Digite o id do jogador que você gostaria de ver informações");
-                    Utilidades.listar_jogadores(quant_jog);
+                    Utilidades.listar_jogadores(quant_jog, tabuleiro);
                     int id4 = entrada.nextInt();
                     Peca peca = new Peca();
-                    peca = Tabuleiro.jogadores.get(id4).getPeca();
-                    System.out.println(Tabuleiro.jogadores.get(id4).toString()); // impressão do jogador
+                    peca = tabuleiro.jogadores.get(id4).getPeca();
+                    System.out.println(tabuleiro.jogadores.get(id4).toString()); // impressão do jogador
                     System.out.println("Posição do jogador: " + peca.getPos());
                     break;
                 
                 case 6:
                     System.out.println("Escolha o Id do jogador que irá se mover");
-                    Utilidades.listar_jogadores(quant_jog);
+                    Utilidades.listar_jogadores(quant_jog, tabuleiro);
                     int id5 = entrada.nextInt();
                     Random dado = new Random();
                     int resultado_dado = dado.nextInt(6) + 1;
                     Peca peca2 = new Peca();
-                    peca2 = Tabuleiro.jogadores.get(id5).getPeca();
+                    peca2 = tabuleiro.jogadores.get(id5).getPeca();
                     peca2.setPos(resultado_dado);
+                    tabuleiro.salvaLog("arquivo.txt", "Jogador número " + id5 + " se moveu " + resultado_dado + " casas");
+                    break;
+                case 7:
+                    System.out.println("Escolha o Id do jogador que irá tirar uma carta");
+                    Utilidades.listar_jogadores(quant_jog, tabuleiro);
+                    int id6 = entrada.nextInt();
+                    carta.executaAcao(tabuleiro.jogadores.get(id6));
+                    tabuleiro.salvaLog("arquivo.txt", "Jogador número " + id6 + " tirou uma carta sorte");
                     break;
                 default:
                     System.out.println("Opção inválida, tente novamente!");
                     break;
             }
         } while (opcao != 0);
+        
     }
 }
