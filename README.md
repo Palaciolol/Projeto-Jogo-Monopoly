@@ -1,18 +1,44 @@
-## Getting Started
+# 🎲 Projeto Jogo Monopoly
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este repositório contém a implementação de uma versão simplificada do jogo **Monopoly**, desenvolvida em **Java** como projeto  da disciplina de **Programação Orientada a Objetos (POO)** na **Unicamp**.
 
-## Folder Structure
 
-The workspace contains two folders by default, where:
+O projeto foi construído com foco no uso e aprofundamento dos principais **conceitos de POO**, como **encapsulamento, herança, polimorfismo, abstração** e **manipulação de exceções**.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+---
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## 💡 Objetivos do Projeto
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- Aplicar os conceitos teóricos de POO em um projeto prático.
+- Modelar um sistema orientado a objetos inspirado no clássico jogo de tabuleiro Monopoly.
+- Desenvolver código limpo, modular e reutilizável.
+- Praticar boas práticas de desenvolvimento em Java.
 
-## Dependency Management
+---
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## 🧱 Conceitos de POO abordados
+
+- **Classes e Objetos**
+- **Encapsulamento**
+- **Herança e Polimorfismo**
+- **Interfaces e Classes Abstratas**
+- **Tratamento de Exceções**
+- **Coleções (ArrayList, Map, etc.)**
+
+
+---
+
+## 🕹️ Funcionalidades implementadas
+
+- Cadastro e gerenciamento de jogadores
+- Sistema de turnos com dados
+- Compra e venda de propriedades
+- Pagamento de aluguel
+- Prisão e cartas de sorte/revés
+- Verificação de falência e fim de jogo
+
+---
+
+
+
+
